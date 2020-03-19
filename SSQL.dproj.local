@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/03/11 17:01:30.000.937,=rtl.dcp</Transaction>
+    <Transaction>2020/03/11 17:01:59.000.307,C:\Users\User\Documents\SSQL\SSQL.dproj=C:\Users\User\Documents\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2020/03/11 17:02:26.000.687,=C:\Users\User\Documents\SSQL\Unit1.pas</Transaction>
+    <Transaction>2020/03/11 17:02:56.000.177,C:\Users\User\Documents\SSQL\uCore.pas=C:\Users\User\Documents\SSQL\Unit1.pas</Transaction>
+    <Transaction>2020/03/11 17:05:12.000.989,=bindengine.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:12.000.999,=bindcomp.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:12.000.979,=dbrtl.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:13.000.009,=RESTComponents.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:13.000.019,=FireDAC.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:13.000.029,=FireDACCommon.dcp</Transaction>
+    <Transaction>2020/03/11 17:05:13.000.019,=FireDACCommonDriver.dcp</Transaction>
+  </Transactions>
+</BorlandProject>
