@@ -45,7 +45,7 @@ object Form1: TForm1
     TitleFont.Style = []
   end
   object SSQL1: TSSQL
-    TunnelUrl = 'http://localhost/AHE/koneksi/konek.php'
+    TunnelUrl = 'http://localhost/AHE/koneksi/tunnel.php'
     Token = '53713'
     Host = 'localhost'
     User = 'root'
