@@ -10,7 +10,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client,SysUtils,Classes,DB,IniFiles, REST.Types,
   REST.Response.Adapter, REST.Client, Data.Bind.Components,
-  Data.Bind.ObjectScope, FireDAC.DApt;
+  Data.Bind.ObjectScope, FireDAC.DApt,FMX.DialogService;
 type
 TSSQL = Class(TComponent)
  Private
@@ -39,15 +39,17 @@ TSSQL = Class(TComponent)
    LastError : string;
    aSQL : TStringList;
    SToken : string;
+   statcode : integer;
    constructor Create(AOwner: TComponent); override;
    destructor  Destroy; override;
+
 
  published
    function ExecSQL(aSQL : string): boolean;
    function LoadX(aSQL : string; Response : TStringStream): TStringStream;
    procedure Open;
    property TunnelUrl : string read FLoadUrl write SetLoadUrl;
-   property MemDataSet : TFDMemTable read FMemDataSet write SetMemTable;
+   property MemDataSet : TFDMemTable read FMemDataSet write FMemDataSet;
    property SQL : TStringList read aSQL write SetSQL;
    property Token : string read FToken write SetToken;
    property Host : string read FHost write SetHost;
@@ -58,7 +60,7 @@ end;
 
 procedure Register;
 var
-statcode : integer;
+
 FHTTP   : TNetHTTPClient;
 aRespon : Tstringstream;
 
@@ -102,7 +104,7 @@ begin
   FHTTP  := TNetHTTPClient.Create(Self);
   aRespon := TStringStream.Create;
   aSQL := TStringList.Create;
-  FMemDataSet := TFDMemTable.Create(self);
+  //FMemDataSet := TFDMemTable.Create(self);
 end;
 
 destructor  TSSQL.Destroy;
@@ -187,6 +189,9 @@ try
       Res := TRESTResponse.Create(Self);
       Adapt := TRESTResponseDataSetAdapter.Create(Self);
 
+      MemDataSet.Close;
+      MemDataSet.Fields.Clear;
+
       Client.BaseURL := TunnelUrl;
       Req.Client := Client;
       Req.Response := Res;
@@ -216,7 +221,8 @@ try
       Req.Execute;
 
     except
-        On E : Exception do LastError := E.Message;
+        On E : Exception do begin LastError := E.Message;        
+                            end;
         end;
 
 finally
